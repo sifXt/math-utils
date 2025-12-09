@@ -1,0 +1,56 @@
+{
+	"name": "@sifxt/math-utils",
+	"version": "1.0.0",
+	"description": "A comprehensive TypeScript math utilities library with type-safe operations, statistical functions, and interpolation tools",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"module": "dist/index.js",
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"prepublishOnly": "npm run build",
+		"test": "jest",
+		"clean": "rm -rf dist"
+	},
+	"keywords": [
+		"math",
+		"mathematics",
+		"utils",
+		"utilities",
+		"typescript",
+		"statistics",
+		"statistical",
+		"mean",
+		"median",
+		"variance",
+		"standard-deviation",
+		"percentile",
+		"rounding",
+		"interpolation",
+		"lerp",
+		"percentage",
+		"distribution",
+		"allocation",
+		"type-safe"
+	],
+	"author": "Sifat Singh <sifatsingh7059@gmail.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sifXt/math-utils.git"
+	},
+	"bugs": {
+		"url": "https://github.com/sifXt/math-utils/issues"
+	},
+	"homepage": "https://github.com/sifXt/math-utils#readme",
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"devDependencies": {
+		"typescript": ">=4.0.0"
+	}
+}
