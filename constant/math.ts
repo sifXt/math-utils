@@ -147,3 +147,77 @@ export const ANGLE = {
     /** Radians to degrees conversion factor (180 / π) */
     RAD_TO_DEG: 180 / Math.PI,
 } as const;
+
+// =============================================================================
+// PRECISE DECIMAL ARITHMETIC CONSTANTS
+// =============================================================================
+
+/**
+ * Rounding modes for precise decimal arithmetic (BigInt-based)
+ * 
+ * These modes are used for string-based precise decimal operations
+ * that avoid floating-point errors.
+ * 
+ * @example
+ * ```typescript
+ * import { preciseRound, PrecisionRoundingMode } from '@sifx/math-utils';
+ * 
+ * preciseRound('2.5', 0, PrecisionRoundingMode.HALF_UP);    // '3'
+ * preciseRound('2.5', 0, PrecisionRoundingMode.HALF_EVEN);  // '2' (banker's)
+ * preciseRound('2.5', 0, PrecisionRoundingMode.HALF_DOWN);  // '2'
+ * ```
+ */
+export enum PrecisionRoundingMode {
+    /** Round away from zero for positive, towards zero for negative */
+    UP = 'UP',
+    /** Round towards zero (truncate) */
+    DOWN = 'DOWN',
+    /** Round towards positive infinity */
+    CEIL = 'CEIL',
+    /** Round towards negative infinity */
+    FLOOR = 'FLOOR',
+    /** Round half away from zero (standard rounding) */
+    HALF_UP = 'HALF_UP',
+    /** Round half towards zero */
+    HALF_DOWN = 'HALF_DOWN',
+    /** Round half to even (Banker's rounding) - best for financial calculations */
+    HALF_EVEN = 'HALF_EVEN',
+    /** Round half towards positive infinity */
+    HALF_CEIL = 'HALF_CEIL',
+    /** Round half towards negative infinity */
+    HALF_FLOOR = 'HALF_FLOOR',
+}
+
+/**
+ * Default rounding mode for precise decimal operations
+ * HALF_EVEN (Banker's rounding) is recommended for financial calculations
+ * as it minimizes cumulative rounding errors
+ * @default PrecisionRoundingMode.HALF_EVEN
+ */
+export const DEFAULT_PRECISION_ROUNDING_MODE = PrecisionRoundingMode.HALF_EVEN;
+
+/**
+ * Default decimal places for precise operations
+ */
+export const DEFAULT_PRECISION_DECIMAL_PLACES = 2;
+
+/**
+ * Precision constants for BigInt-based decimal arithmetic
+ * 
+ * @example
+ * ```typescript
+ * import { PRECISION } from '@sifx/math-utils';
+ * 
+ * preciseDivide('10', '3', PRECISION.HIGH);  // High precision division
+ * ```
+ */
+export const PRECISION = {
+    /** Default precision for division operations */
+    DEFAULT: 20,
+    /** High precision for critical calculations */
+    HIGH: 40,
+    /** Maximum practical precision */
+    MAX: 100,
+    /** Epsilon for precise decimal comparisons */
+    EPSILON: '0.0000000001',
+} as const;
