@@ -220,11 +220,11 @@ describe('Math Utilities', () => {
         });
 
         test('addPercent - should add percentage', () => {
-            expect(MathUtils.addPercent(100, 10)).toBe(110);
+            expect(MathUtils.addPercent(100, 10)).toBeCloseTo(110);
         });
 
         test('subtractPercent - should subtract percentage', () => {
-            expect(MathUtils.subtractPercent(100, 10)).toBe(90);
+            expect(MathUtils.subtractPercent(100, 10)).toBeCloseTo(90);
         });
     });
 

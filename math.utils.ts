@@ -1247,8 +1247,13 @@ export function preciseRound(
         return (parts.isNegative ? '-' : '') + parts.integer + '.' + keepDigits;
     }
 
-    // Round up
-    const incrementValue = '0.' + '0'.repeat(decimalPlaces - 1) + '1';
+    // Round up - handle decimalPlaces = 0 specially
+    let incrementValue: string;
+    if (decimalPlaces === 0) {
+        incrementValue = '1';
+    } else {
+        incrementValue = '0.' + '0'.repeat(decimalPlaces - 1) + '1';
+    }
     const rounded = preciseAdd(
         (parts.isNegative ? '-' : '') + parts.integer + '.' + keepDigits,
         parts.isNegative ? preciseNegate(incrementValue) : incrementValue,
